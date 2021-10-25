@@ -25,7 +25,6 @@ class _Opcion1ScreenState extends State<Opcion1Screen> {
       style: ElevatedButton.styleFrom(primary: ColorSettings.colorButton),
       onPressed: () {
         String textoBueno = '';
-        //print((propina * .10));
         try {
           double total = double.parse(txtPropinaCon.text);
           double propina = total * .10;
@@ -37,7 +36,6 @@ class _Opcion1ScreenState extends State<Opcion1Screen> {
         } catch (Exception) {
           textoBueno = 'Datos erroneos';
         }
-
         showDialog(
             context: context,
             builder: (context) => AlertDialog(

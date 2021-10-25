@@ -42,6 +42,36 @@ class dashboard_screen extends StatelessWidget {
                 Navigator.pop(context);
                 Navigator.pushNamed(context, '/intenciones');
               },
+            ),
+            ListTile(
+              title: Text('Notas'),
+              subtitle: Text('CRUD Notas'),
+              leading: Icon(Icons.note),
+              trailing: Icon(Icons.chevron_right),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/notas');
+              },
+            ),
+            ListTile(
+              title: Text('Perfil'),
+              subtitle: Text('Información del perfil'),
+              leading: Icon(Icons.account_circle),
+              trailing: Icon(Icons.chevron_right),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/perfil');
+              },
+            ),
+            ListTile(
+              title: Text('Películas'),
+              subtitle: Text('Películas populares (API REST)'),
+              leading: Icon(Icons.movie),
+              trailing: Icon(Icons.chevron_right),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/movie');
+              },
             )
           ],
         ),
