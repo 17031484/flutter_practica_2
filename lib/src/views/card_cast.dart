@@ -14,79 +14,25 @@ class _CardCastViewState extends State<CardCastView> {
   int cond = 0;
   @override
   Widget build(BuildContext context) {
-    final movie =
-        ModalRoute.of(context)!.settings.arguments as PopularMoviesModel;
+    final cast = widget.actoresModel;
 
-    Container info = new Container(
-        child: Text('${movie.overview} \n',
-            style: TextStyle(color: Colors.white)));
 
-    Container trailer = new Container(
-      child: Row(
-        children: [
-          IconButton(
-              onPressed: () {
-                setState(() {
-                  cond++;
-                });
-              },
-              icon: (cond % 2) == 0
-                  ? Icon(
-                      Icons.favorite_border,
-                      color: Colors.white,
-                    )
-                  : Icon(
-                      Icons.favorite,
-                      color: Colors.white,
-                    )),
-          ElevatedButton(
-            onPressed: () {},
-            child: Row(
-              children: [Icon(Icons.play_arrow), Text('Ver trailer')],
-            ),
-            style: ElevatedButton.styleFrom(
-                primary: Colors.black.withOpacity(0.5)),
-          )
-        ],
+
+    return Container(
+      width: 120,
+      height: 120,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.blue
       ),
-    );
-
-    return Stack(
-      alignment: Alignment.topCenter,
-      children: [
-        new Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: NetworkImage(
-                      'https://image.tmdb.org/t/p/w500/${movie.posterPath}'),
-                  fit: BoxFit.cover,
-                  colorFilter: new ColorFilter.mode(
-                      Colors.black.withOpacity(1), BlendMode.dstATop))),
-        ),
-        Card(
-          color: Colors.black.withOpacity(0.25),
-          child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: ListView(
-                shrinkWrap: false,
-                children: [
-                  Center(
-                    child: Text('${movie.title}\n',
-                        style: TextStyle(fontSize: 25, color: Colors.white)),
-                  ),
-                  Text(
-                    'Synopsis \n',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                  info,
-                  trailer,
-                  SizedBox(
-                    height: 10,
-                  ),
-                ],
-              )),
-        )
-      ],
+      child: Center(
+        child: Text(cast.name.toString(),
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.bold
+        ),),
+      ),
     );
   }
 }
