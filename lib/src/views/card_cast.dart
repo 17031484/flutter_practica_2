@@ -15,23 +15,18 @@ class _CardCastViewState extends State<CardCastView> {
   @override
   Widget build(BuildContext context) {
     final cast = widget.actoresModel;
-
-
-
     return Container(
       width: 120,
       height: 120,
       decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: Colors.blue
-      ),
+          shape: BoxShape.circle, color: Colors.blue.withOpacity(0.3)),
       child: Center(
-        child: Text(cast.name.toString(),
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 20,
-          fontWeight: FontWeight.bold
-        ),),
+        child: CircleAvatar(
+          minRadius: 15.0,
+          maxRadius: 45.0,
+          backgroundImage: NetworkImage(
+              'https://www.themoviedb.org/t/p/w1280/${cast.profile_path}'),
+        ),
       ),
     );
   }

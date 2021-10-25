@@ -17,10 +17,7 @@ class _DetalleScreenState extends State<DetalleScreen> {
 
   Widget _listCasting(List<ActoresModel>? actors) {
     final movie =
-    ModalRoute
-        .of(context)!
-        .settings
-        .arguments as PopularMoviesModel;
+        ModalRoute.of(context)!.settings.arguments as PopularMoviesModel;
 
     Container info = new Container(
         child: Text('${movie.overview} \n',
@@ -36,13 +33,13 @@ class _DetalleScreenState extends State<DetalleScreen> {
               },
               icon: (cond % 2) == 0
                   ? Icon(
-                Icons.favorite_border,
-                color: Colors.white,
-              )
+                      Icons.favorite_border,
+                      color: Colors.white,
+                    )
                   : Icon(
-                Icons.favorite,
-                color: Colors.white,
-              )),
+                      Icons.favorite,
+                      color: Colors.white,
+                    )),
           ElevatedButton(
             onPressed: () {},
             child: Row(
@@ -101,38 +98,30 @@ class _DetalleScreenState extends State<DetalleScreen> {
                   SizedBox(
                     height: 10,
                   ),
-
                 ],
               )),
         ),
         Container(
-          margin: EdgeInsets.only(top:400),
-    height: 100,
-    child:
-        ListView.builder(
-          scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              ActoresModel actoresModel = actors![index];
-              return CardCastView(actoresModel: actoresModel);
-              //return Text(popular.title!);
-            },
-
-            itemCount: actors!.length))
+            margin: EdgeInsets.only(top: 500),
+            height: 100,
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  ActoresModel actoresModel = actors![index];
+                  return CardCastView(actoresModel: actoresModel);
+                  //return Text(popular.title!);
+                },
+                itemCount: actors!.length))
       ],
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     final movie =
-    ModalRoute
-        .of(context)!
-        .settings
-        .arguments as PopularMoviesModel;
+        ModalRoute.of(context)!.settings.arguments as PopularMoviesModel;
     return Scaffold(
-        body:
-        FutureBuilder(
+        body: FutureBuilder(
             future: apiActores!.getAllActores(movie.id!),
             builder: (BuildContext context,
                 AsyncSnapshot<List<ActoresModel>?> snapshot) {
@@ -148,4 +137,3 @@ class _DetalleScreenState extends State<DetalleScreen> {
             }));
   }
 }
-
